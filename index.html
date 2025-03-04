@@ -3,86 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Voleibol - Página en Construcción</title>
+    <title>Mi Tienda en Línea</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
         }
+
+        /* Estilo del encabezado */
         header {
-            background-color: #008CBA;
+            background-color: #000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: #222;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        /* Sección de productos */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        .product-card p {
+            color: #777;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Estilo del pie de página */
+        footer {
+            background-color: #222;
             color: white;
             padding: 20px;
             text-align: center;
         }
-        .container {
-            text-align: center;
-            margin: 50px;
-        }
-        .construction {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #FF6347;
-        }
-        .content {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            color: #333;
-        }
-        .subscribe {
-            margin-top: 20px;
-        }
-        input[type="email"] {
-            padding: 10px;
-            width: 300px;
-            font-size: 1rem;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #005f73;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+
+        footer p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>¡Bienvenidos a la tienda de Voleibol, UMIZUMI!</h1>
-</header>
+    <!-- Encabezado -->
+    <header>
+        <h1>Mi Tienda en Línea</h1>
+    </header>
 
-<div class="container">
-    <p class="construction">¡Nuestra tienda está en construcción!</p>
+    <!-- Barra de navegación -->
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Productos</a>
+        <a href="#">Contacto</a>
+        <a href="#">Carrito</a>
+    </nav>
 
-    <div class="content">
-        <p>Estimado cliente, pronto estara toda la mercancia disponible y estaremos a su disposición. ¿Qué podras encontrar?</p>
-        <ul>
-            <li>Pelotas de voleibol de alta calidad</li>
-            <li>Redes profesionales</li>
-            <li>Equipos de entrenamiento</li>
-            <li>Accesorios y más</li>
-        </ul>
-    </div>
-</div>
+    <!-- Sección de productos -->
+    <section class="product-container">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300" alt="Producto 1">
+            <h3>Producto 1</h3>
+            <p>Descripción breve del producto</p>
+            <p class="price">$19.99</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300" alt="Producto 2">
+            <h3>Producto 2</h3>
+            <p>Descripción breve del producto</p>
+            <p class="price">$29.99</p>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300" alt="Producto 3">
+            <h3>Producto 3</h3>
+            <p>Descripción breve del producto</p>
+            <p class="price">$15.99</p>
+        </div>
+    </section>
 
-<footer>
-    <p>Síguenos en nuestras redes sociales: Instagram</p>
-</footer>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Mi Tienda en Línea</p>
+        <p>Contacto: info@mitienda.com</p>
+    </footer>
 
 </body>
 </html>
