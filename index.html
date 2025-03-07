@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -39,6 +39,19 @@
         nav a:hover {
             background-color: #555;
             border-radius: 10px;
+        }
+
+        .search-bar {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 50%;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 8px;
         }
 
         .banner {
@@ -136,26 +149,33 @@
         <a href="#">Ofertas</a>
         <a href="#">Contacto</a>
         <a href="#">Carrito</a>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar en la tienda...">
+        </div>
     </nav>
 
     <div class="banner">¡Descubre los Mejores Productos!</div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar productos...">
+    </div>
 
     <section class="product-container">
         <div class="product-card">
             <h3>Balón de Voleibol Mooolten</h3>
             <p class="price">$250.00MXN</p>
-            <a href="#" class="buy-button">Comprar</a>
+            <a href="compra.html" class="buy-button">Comprar</a>
         </div>
         <div class="product-card">
-         <h3>Balón de Voleibol Profesional</h3>
+            <h3>Balón de Voleibol Profesional</h3>
             <p class="price">$500.00MXN</p>
-            <a href="#" class="buy-button">Comprar</a>
+            <a href="compra.html" class="buy-button">Comprar</a>
         </div>
         <div class="product-card">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlrgFmaN2mnXz82OxJad0oyz1vBPWgzGbEbw&s" alt="Balón de voleibol Voit">
             <h3>Balón de Voleibol Voit</h3>
             <p class="price">$15.99</p>
-            <a href="#" class="buy-button">Comprar</a>
+            <a href="compra.html" class="buy-button">Comprar</a>
         </div>
     </section>
 
