@@ -171,6 +171,24 @@
             background-color: #0056b3;
         }
 
+        /* Estilos para la tabla de detalles de productos */
+        .product-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .product-details-table th,
+        .product-details-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .product-details-table th {
+            background-color: #f4f4f4;
+        }
+
         /* Estilos para el pie de página */
         footer {
             background-color: #222;
@@ -229,75 +247,30 @@
 
             <!-- Productos en cada categoría -->
             <div id="balones" class="product-container">
-                <div class="product-card">
+                <div class="product-card" onclick="showDetails('Balón de Voleibol Molten', 'Balón de alta calidad, ideal para entrenamientos y partidos', 250, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s')">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
                     <h3>Balón de Voleibol Molten</h3>
                     <p class="price">$250.00 MXN</p>
-                    <div class="buy-button">Comprar</div>
+                    <div class="buy-button" onclick="addToCart('Balón de Voleibol Molten', 250)">Comprar</div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" onclick="showDetails('Balón de Voleibol Profesional', 'Balón profesional, perfecto para competiciones de alto nivel', 500, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s')">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s" alt="Balón de Voleibol Profesional">
                     <h3>Balón de Voleibol Profesional</h3>
                     <p class="price">$500.00 MXN</p>
-                    <div class="buy-button">Comprar</div>
+                    <div class="buy-button" onclick="addToCart('Balón de Voleibol Profesional', 500)">Comprar</div>
                 </div>
             </div>
         </div>
 
-        <!-- Sección de ofertas -->
-        <div id="ofertas" class="section">
-            <h2>Ofertas Especiales</h2>
-            <p>Aquí encontrarás las mejores ofertas de la temporada. ¡No te las pierdas!</p>
-        </div>
-
-        <!-- Sección de contacto -->
-        <div id="contacto" class="section">
-            <h2>Contacto</h2>
-            <p>Si tienes preguntas, no dudes en contactarnos. Estamos para ayudarte.</p>
+        <!-- Detalles del producto -->
+        <div id="product-details" class="section" style="display: none;">
+            <h2>Detalles del Producto</h2>
+            <table class="product-details-table" id="details-table">
+                <!-- Aquí se llenarán los detalles del producto -->
+            </table>
         </div>
 
         <!-- Sección de carrito -->
         <div id="carrito" class="section">
             <h2>Tu Carrito</h2>
-            <p>Aún no tienes productos en tu carrito.</p>
-        </div>
-    </div>
-
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2025 Mi Tienda en Línea | Todos los derechos reservados</p>
-        <p>Contacto: info@mitienda.com | Teléfono: +52 123 456 7890</p>
-    </footer>
-
-    <!-- Script para cargar las páginas sin recargar -->
-    <script>
-        function loadPage(page) {
-            // Ocultar todas las secciones
-            const secciones = document.querySelectorAll('.section');
-            secciones.forEach(seccion => seccion.style.display = 'none');
-            
-            // Mostrar la sección seleccionada
-            const seccionSeleccionada = document.getElementById(page);
-            if (seccionSeleccionada) {
-                seccionSeleccionada.style.display = 'block';
-            }
-        }
-
-        // Cargar productos por categoría
-        function loadCategory(category) {
-            const categories = document.querySelectorAll('.product-container');
-            categories.forEach(c => c.style.display = 'none');
-            
-            const categorySelected = document.getElementById(category);
-            if (categorySelected) {
-                categorySelected.style.display = 'grid';
-            }
-        }
-
-        // Por defecto mostrar la sección de inicio
-        window.onload = function() {
-            loadPage('inicio');
-        }
-    </script>
-</body>
-</html>
+            <div id="cart-items">Aún no tienes productos en tu carrito.</div>
