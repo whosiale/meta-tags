@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umizuumi's Volleyball Shop</title>
     <style>
+        /* Estilos para el cuerpo de la página */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -13,6 +14,7 @@
             color: #333;
         }
 
+        /* Estilos para el encabezado */
         header {
             background-color: #000;
             color: white;
@@ -21,6 +23,7 @@
             font-size: 1.2em;
         }
 
+        /* Estilos para la barra de navegación */
         nav {
             background-color: #222;
             padding: 15px;
@@ -42,6 +45,7 @@
             border-radius: 10px;
         }
 
+        /* Estilos para la barra de búsqueda */
         .search-bar {
             margin-top: 10px;
             text-align: center;
@@ -55,6 +59,7 @@
             border-radius: 8px;
         }
 
+        /* Estilos para el banner */
         .banner {
             background: url('https://source.unsplash.com/1600x600/?volleyball') no-repeat center center/cover;
             height: 300px;
@@ -67,12 +72,14 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
+        /* Estilos para el contenido principal */
         .content {
             padding: 30px;
             max-width: 1200px;
             margin: auto;
         }
 
+        /* Estilos para los productos */
         .product-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -134,6 +141,7 @@
             background: #0056b3;
         }
 
+        /* Estilos para el pie de página */
         footer {
             background-color: #222;
             color: white;
@@ -141,13 +149,20 @@
             text-align: center;
             font-size: 1.1em;
         }
+
+        /* Estilos para las secciones */
+        .section {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Encabezado de la página -->
     <header>
         <h1>Umizuumi's Volleyball Shop</h1>
     </header>
 
+    <!-- Barra de navegación -->
     <nav>
         <a onclick="loadPage('inicio')">Inicio</a>
         <a onclick="loadPage('productos')">Productos</a>
@@ -159,33 +174,77 @@
         </div>
     </nav>
 
+    <!-- Banner principal -->
     <div class="banner">¡Descubre los Mejores Productos!</div>
 
+    <!-- Contenido principal -->
     <div class="content" id="content">
-        <section class="product-container">
-            <div class="product-card" onclick="loadPage('compra')">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
-                <h3>Balón de Voleibol Molten</h3>
-                <p class="price">$250.00 MXN</p>
-                <div class="buy-button">Comprar</div>
-            </div>
-            <div class="product-card" onclick="loadPage('compra')">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s" alt="Balón de Voleibol Profesional">
-                <h3>Balón de Voleibol Profesional</h3>
-                <p class="price">$500.00 MXN</p>
-                <div class="buy-button">Comprar</div>
-            </div>
-        </section>
+        <!-- Sección de inicio -->
+        <div id="inicio" class="section">
+            <h2>Bienvenido a Umizuumi's Volleyball Shop</h2>
+            <p>Descubre los mejores productos para voleibol en nuestra tienda en línea.</p>
+        </div>
+
+        <!-- Sección de productos -->
+        <div id="productos" class="section">
+            <section class="product-container">
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
+                    <h3>Balón de Voleibol Molten</h3>
+                    <p class="price">$250.00 MXN</p>
+                    <div class="buy-button">Comprar</div>
+                </div>
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s" alt="Balón de Voleibol Profesional">
+                    <h3>Balón de Voleibol Profesional</h3>
+                    <p class="price">$500.00 MXN</p>
+                    <div class="buy-button">Comprar</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sección de ofertas -->
+        <div id="ofertas" class="section">
+            <h2>Ofertas Especiales</h2>
+            <p>Aquí encontraras las mejores ofertas de la temporada.</p>
+        </div>
+
+        <!-- Sección de contacto -->
+        <div id="contacto" class="section">
+            <h2>Contacto</h2>
+            <p>Si tienes preguntas, no dudes en contactarnos.</p>
+        </div>
+
+        <!-- Sección de carrito -->
+        <div id="carrito" class="section">
+            <h2>Tu Carrito</h2>
+            <p>Aún no tienes productos en tu carrito.</p>
+        </div>
     </div>
 
+    <!-- Pie de página -->
     <footer>
         <p>&copy; 2025 Mi Tienda en Línea | Todos los derechos reservados</p>
         <p>Contacto: info@mitienda.com | Teléfono: +52 123 456 7890</p>
     </footer>
 
+    <!-- Script para cargar las páginas sin recargar -->
     <script>
         function loadPage(page) {
-            document.getElementById('content').innerHTML = <h2>${page} - Contenido en construcción</h2>;
+            // Ocultar todas las secciones
+            const secciones = document.querySelectorAll('.section');
+            secciones.forEach(seccion => seccion.style.display = 'none');
+            
+            // Mostrar la sección seleccionada
+            const seccionSeleccionada = document.getElementById(page);
+            if (seccionSeleccionada) {
+                seccionSeleccionada.style.display = 'block';
+            }
+        }
+
+        // Por defecto mostrar la sección de inicio
+        window.onload = function() {
+            loadPage('inicio');
         }
     </script>
 </body>
