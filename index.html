@@ -20,7 +20,7 @@
             color: white;
             padding: 20px 0;
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.5em;
         }
 
         /* Estilos para la barra de navegación */
@@ -59,10 +59,10 @@
             border-radius: 8px;
         }
 
-        /* Estilos para el banner */
+        /* Estilos para el banner de la sección de inicio */
         .banner {
             background: url('https://source.unsplash.com/1600x600/?volleyball') no-repeat center center/cover;
-            height: 300px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,13 +79,23 @@
             margin: auto;
         }
 
-        /* Estilos para los productos */
+        /* Base para todas las secciones */
+        .section {
+            padding: 20px;
+            margin-bottom: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sección de productos */
         .product-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
 
+        /* Tarjetas de productos */
         .product-card {
             background-color: white;
             border: 2px solid #ddd;
@@ -141,6 +151,26 @@
             background: #0056b3;
         }
 
+        /* Estilos para las categorías */
+        .category-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .category {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .category:hover {
+            background-color: #0056b3;
+        }
+
         /* Estilos para el pie de página */
         footer {
             background-color: #222;
@@ -150,10 +180,6 @@
             font-size: 1.1em;
         }
 
-        /* Estilos para las secciones */
-        .section {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -182,12 +208,27 @@
         <!-- Sección de inicio -->
         <div id="inicio" class="section">
             <h2>Bienvenido a Umizuumi's Volleyball Shop</h2>
-            <p>Descubre los mejores productos para voleibol en nuestra tienda en línea.</p>
+            <p>En nuestra tienda encontrarás todo lo que necesitas para disfrutar del voleibol al máximo. Desde balones profesionales hasta ropa especializada, tenemos lo mejor del mercado.</p>
+            <p>Nos apasiona este deporte y queremos compartir con todos los jugadores lo que más les ayuda a mejorar su rendimiento y disfrutar de cada partido. ¡Explora y encuentra tus nuevos productos favoritos!</p>
+            <h3>Información sobre el Voleibol</h3>
+            <p>El voleibol es un deporte dinámico, jugado entre dos equipos de seis jugadores cada uno. El objetivo es anotar puntos golpeando el balón para que este toque el suelo del equipo contrario.</p>
+            <p>En nuestra tienda podrás encontrar todo lo necesario para jugar al voleibol a nivel profesional o recreativo.</p>
         </div>
 
         <!-- Sección de productos -->
         <div id="productos" class="section">
-            <section class="product-container">
+            <h2>Productos Disponibles</h2>
+            <p>Aquí encontrarás los mejores productos para tus entrenamientos y partidos de voleibol. Selecciona una categoría para explorar más.</p>
+            
+            <!-- Categorías de productos -->
+            <div class="category-container">
+                <div class="category" onclick="loadCategory('balones')">Balones</div>
+                <div class="category" onclick="loadCategory('ropa')">Ropa</div>
+                <div class="category" onclick="loadCategory('accesorios')">Accesorios</div>
+            </div>
+
+            <!-- Productos en cada categoría -->
+            <div id="balones" class="product-container">
                 <div class="product-card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
                     <h3>Balón de Voleibol Molten</h3>
@@ -200,19 +241,19 @@
                     <p class="price">$500.00 MXN</p>
                     <div class="buy-button">Comprar</div>
                 </div>
-            </section>
+            </div>
         </div>
 
         <!-- Sección de ofertas -->
         <div id="ofertas" class="section">
             <h2>Ofertas Especiales</h2>
-            <p>Aquí encontraras las mejores ofertas de la temporada.</p>
+            <p>Aquí encontrarás las mejores ofertas de la temporada. ¡No te las pierdas!</p>
         </div>
 
         <!-- Sección de contacto -->
         <div id="contacto" class="section">
             <h2>Contacto</h2>
-            <p>Si tienes preguntas, no dudes en contactarnos.</p>
+            <p>Si tienes preguntas, no dudes en contactarnos. Estamos para ayudarte.</p>
         </div>
 
         <!-- Sección de carrito -->
@@ -239,6 +280,17 @@
             const seccionSeleccionada = document.getElementById(page);
             if (seccionSeleccionada) {
                 seccionSeleccionada.style.display = 'block';
+            }
+        }
+
+        // Cargar productos por categoría
+        function loadCategory(category) {
+            const categories = document.querySelectorAll('.product-container');
+            categories.forEach(c => c.style.display = 'none');
+            
+            const categorySelected = document.getElementById(category);
+            if (categorySelected) {
+                categorySelected.style.display = 'grid';
             }
         }
 
