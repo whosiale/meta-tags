@@ -153,22 +153,17 @@
 
         /* Estilos para las categorías */
         .category-container {
-            display: flex;
-            justify-content: space-around;
+            text-align: center;
             margin-bottom: 30px;
         }
 
-        .category {
-            background-color: #007BFF;
-            color: white;
-            padding: 12px 25px;
+        .category-select {
+            padding: 10px;
+            font-size: 1.2em;
             border-radius: 8px;
+            border: 2px solid #ddd;
+            width: 200px;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .category:hover {
-            background-color: #0056b3;
         }
 
         /* Estilos para el pie de página */
@@ -178,6 +173,23 @@
             padding: 25px;
             text-align: center;
             font-size: 1.1em;
+        }
+
+        /* Estilo para la tabla de descripción de productos */
+        .product-info-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-info-table th, .product-info-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .product-info-table th {
+            background-color: #f4f4f4;
         }
 
     </style>
@@ -201,7 +213,7 @@
     </nav>
 
     <!-- Banner principal -->
-    <div class="banner">¡Descubre los Mejores Productos!</div>
+    <div class="banner"></div>
 
     <!-- Contenido principal -->
     <div class="content" id="content">
@@ -210,38 +222,42 @@
             <h2>Bienvenido a Umizuumi's Volleyball Shop</h2>
             <p>En nuestra tienda encontrarás todo lo que necesitas para disfrutar del voleibol al máximo. Desde balones profesionales hasta ropa especializada, tenemos lo mejor del mercado.</p>
             <p>Nos apasiona este deporte y queremos compartir con todos los jugadores lo que más les ayuda a mejorar su rendimiento y disfrutar de cada partido. ¡Explora y encuentra tus nuevos productos favoritos!</p>
-            <h3>Información sobre el Voleibol</h3>
-            <p>El voleibol es un deporte dinámico, jugado entre dos equipos de seis jugadores cada uno. El objetivo es anotar puntos golpeando el balón para que este toque el suelo del equipo contrario.</p>
-            <p>En nuestra tienda podrás encontrar todo lo necesario para jugar al voleibol a nivel profesional o recreativo.</p>
         </div>
 
         <!-- Sección de productos -->
         <div id="productos" class="section">
             <h2>Productos Disponibles</h2>
             <p>Aquí encontrarás los mejores productos para tus entrenamientos y partidos de voleibol. Selecciona una categoría para explorar más.</p>
-            
-            <!-- Categorías de productos -->
+
+            <!-- Selección de categoría -->
             <div class="category-container">
-                <div class="category" onclick="loadCategory('balones')">Balones</div>
-                <div class="category" onclick="loadCategory('ropa')">Ropa</div>
-                <div class="category" onclick="loadCategory('accesorios')">Accesorios</div>
+                <select class="category-select" onchange="loadCategory(this.value)">
+                    <option value="">Seleccionar Categoría</option>
+                    <option value="balones">Balones</option>
+                    <option value="ropa">Ropa</option>
+                    <option value="accesorios">Accesorios</option>
+                </select>
             </div>
 
             <!-- Productos en cada categoría -->
             <div id="balones" class="product-container">
-                <div class="product-card">
+                <div class="product-card" onclick="showProductDetails('balon1')">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
                     <h3>Balón de Voleibol Molten</h3>
                     <p class="price">$250.00 MXN</p>
-                    <div class="buy-button">Comprar</div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" onclick="showProductDetails('balon2')">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s" alt="Balón de Voleibol Profesional">
                     <h3>Balón de Voleibol Profesional</h3>
                     <p class="price">$500.00 MXN</p>
-                    <div class="buy-button">Comprar</div>
                 </div>
             </div>
+        </div>
+
+        <!-- Detalles de los productos -->
+        <div id="product-details" class="section" style="display:none;">
+            <h2>Detalles del Producto</h2>
+            <div id="product-info"></div>
         </div>
 
         <!-- Sección de ofertas -->
@@ -291,6 +307,51 @@
             const categorySelected = document.getElementById(category);
             if (categorySelected) {
                 categorySelected.style.display = 'grid';
+            }
+        }
+
+        // Mostrar los detalles del producto
+        function showProductDetails(product) {
+            const details = {
+                'balon1': {
+                    name: 'Balón de Voleibol Molten',
+                    price: '$250.00 MXN',
+                    description: 'Este balón de voleibol Molten es ideal para entrenamientos y partidos amateur. Con un diseño ergonómico y duradero, asegura un buen control del balón.',
+                    images: [
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s',
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvyyK4p5Zb_MQGvPToJpJGvvgtcYRAwBoNYw&s'
+                    ]
+                },
+                'balon2': {
+                    name: 'Balón de Voleibol Profesional',
+                    price: '$500.00 MXN',
+                    description: 'Este balón de voleibol profesional es perfecto para competencias de alto nivel. Hecho con materiales de calidad que garantizan un excelente rendimiento.',
+                    images: [
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s',
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMC5z-EbdP8ZLXTo-YtKo5k8OTn1aA9x_U8w&s'
+                    ]
+                }
+            };
+            
+            const productData = details[product];
+            if (productData) {
+                document.getElementById('product-info').innerHTML = `
+                    <h3>${productData.name}</h3>
+                    <p><strong>Precio:</strong> ${productData.price}</p>
+                    <p><strong>Descripción:</strong> ${productData.description}</p>
+                    <table class="product-info-table">
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Detalles</th>
+                        </tr>
+                        <tr>
+                            <td><img src="${productData.images[0]}" alt="${productData.name}" style="max-width: 150px;"></td>
+                            <td>${productData.description}</td>
+                        </tr>
+                    </table>
+                    <div class="buy-button">Comprar</div>
+                `;
+                loadPage('product-details');
             }
         }
 
