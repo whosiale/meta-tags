@@ -61,7 +61,7 @@
 
         /* Estilos para el banner de la sección de inicio */
         .banner {
-            background: url('https://i.pinimg.com/736x/13/7b/9e/137b9ea8a0c81aca1f0ae34264319b7b.jpg') no-repeat center center/cover;
+            background: url('https://source.unsplash.com/1600x600/?volleyball') no-repeat center center/cover;
             height: 350px;
             display: flex;
             align-items: center;
@@ -251,16 +251,6 @@
                     <h3>Balón de Voleibol Profesional</h3>
                     <p class="price">$500.00 MXN</p>
                 </div>
-                <div class="product-card" onclick="showProductDetails('balon3')">
-                    <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRbeYVOkUPBM4P_Rz_T1FOsBbpHVKmhgs6Ezhxy8uj2vbFWoV_HivLsIzuSH_9qlRQWBlS7yph2kBrI1_W3RiSguxdHfQ0q_wncVAo8gcHswmb15C-8QBpz" alt="Balón de Voleibol Molten">
-                    <h3>Balón de Voleibol Molten V58R Clásico</h3>
-                    <p class="price">$315.00 MXN</p>
-                </div>
-                <div class="product-card" onclick="showProductDetails('balon4')">
-                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ4_tKqX8ZbzLH06f7UlqsrWE5kHmeYj-GzXPbU3uEh7ffMUn-vBQoa1HavDeSiEll6_kro5aUTSm9S38TyeNumKToCBQYP8hrV_iHx2hTx" alt="Balón de Voleibol Molten rosa">
-                    <h3>Molten Premium Balón de Voleibol L2 de competencia</h3>
-                    <p class="price">$690.00 MXN</p>
-                </div>
             </div>
         </div>
 
@@ -341,20 +331,11 @@
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMC5z-EbdP8ZLXTo-YtKo5k8OTn1aA9x_U8w&s'
                     ]
                 }
-                'balon3': {
-                    name: 'Balón de Voleibol Molten V58R Clásico',
-                    price: '$500.00 MXN',
-                    description: 'Este balón de voleibol profesional es perfecto para competencias de alto nivel. Hecho con materiales de calidad que garantizan un excelente rendimiento.',
-                    images: [
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s',
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMC5z-EbdP8ZLXTo-YtKo5k8OTn1aA9x_U8w&s'
-                    ]
-                }
             };
             
             const productData = details[product];
             if (productData) {
-                document.getElementById('product-info').innerHTML = 
+                document.getElementById('product-info').innerHTML = `
                     <h3>${productData.name}</h3>
                     <p><strong>Precio:</strong> ${productData.price}</p>
                     <p><strong>Descripción:</strong> ${productData.description}</p>
@@ -369,7 +350,7 @@
                         </tr>
                     </table>
                     <div class="buy-button">Comprar</div>
-                ;
+                `;
                 loadPage('product-details');
             }
         }
