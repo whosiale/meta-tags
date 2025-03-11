@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umizuumi's Volleyball Shop</title>
     <style>
-        /* Estilos para el cuerpo de la página */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -14,7 +13,6 @@
             color: #333;
         }
 
-        /* Estilos para el encabezado */
         header {
             background-color: #000;
             color: white;
@@ -23,7 +21,6 @@
             font-size: 1.5em;
         }
 
-        /* Estilos para la barra de navegación */
         nav {
             background-color: #222;
             padding: 15px;
@@ -45,8 +42,8 @@
             border-radius: 10px;
         }
 
-        /* Estilos para la barra de búsqueda */
         .search-bar {
+            display: none;
             margin-top: 10px;
             text-align: center;
         }
@@ -59,7 +56,6 @@
             border-radius: 8px;
         }
 
-        /* Estilos para el banner de la sección de inicio */
         .banner {
             background: url('https://source.unsplash.com/1600x600/?volleyball') no-repeat center center/cover;
             height: 350px;
@@ -72,15 +68,14 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* Estilos para el contenido principal */
         .content {
             padding: 30px;
             max-width: 1200px;
             margin: auto;
         }
 
-        /* Base para todas las secciones */
         .section {
+            display: none;
             padding: 20px;
             margin-bottom: 40px;
             background-color: white;
@@ -88,14 +83,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Sección de productos */
         .product-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        /* Tarjetas de productos */
         .product-card {
             background-color: white;
             border: 2px solid #ddd;
@@ -151,22 +144,6 @@
             background: #0056b3;
         }
 
-        /* Estilos para las categorías */
-        .category-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .category-select {
-            padding: 10px;
-            font-size: 1.2em;
-            border-radius: 8px;
-            border: 2px solid #ddd;
-            width: 200px;
-            cursor: pointer;
-        }
-
-        /* Estilos para el pie de página */
         footer {
             background-color: #222;
             color: white;
@@ -174,79 +151,36 @@
             text-align: center;
             font-size: 1.1em;
         }
-
-        /* Estilo para la tabla de descripción de productos */
-        .product-info-table {
-            margin-top: 20px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .product-info-table th, .product-info-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .product-info-table th {
-            background-color: #f4f4f4;
-        }
-
     </style>
 </head>
 <body>
-    <!-- Encabezado de la página -->
     <header>
         <h1>Umizuumi's Volleyball Shop</h1>
     </header>
 
-    <!-- Barra de navegación -->
     <nav>
         <a onclick="loadPage('inicio')">Inicio</a>
         <a onclick="loadPage('productos')">Productos</a>
-        <a onclick="loadPage('ofertas')">Ofertas</a>
-        <a onclick="loadPage('contacto')">Contacto</a>
         <a onclick="loadPage('carrito')">Carrito</a>
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar en la tienda...">
-        </div>
     </nav>
 
-    <!-- Banner principal -->
-    <div class="banner"></div>
-
-    <!-- Contenido principal -->
     <div class="content" id="content">
-        <!-- Sección de inicio -->
-        <div id="inicio" class="section">
+        <div id="inicio" class="section" style="display:block;">
             <h2>Bienvenido a Umizuumi's Volleyball Shop</h2>
-            <p>En nuestra tienda encontrarás todo lo que necesitas para disfrutar del voleibol al máximo. Desde balones profesionales hasta ropa especializada, tenemos lo mejor del mercado.</p>
-            <p>Nos apasiona este deporte y queremos compartir con todos los jugadores lo que más les ayuda a mejorar su rendimiento y disfrutar de cada partido. ¡Explora y encuentra tus nuevos productos favoritos!</p>
         </div>
 
-        <!-- Sección de productos -->
         <div id="productos" class="section">
             <h2>Productos Disponibles</h2>
-            <p>Aquí encontrarás los mejores productos para tus entrenamientos y partidos de voleibol. Selecciona una categoría para explorar más.</p>
-
-            <!-- Selección de categoría -->
-            <div class="category-container">
-                <select class="category-select" onchange="loadCategory(this.value)">
-                    <option value="">Seleccionar Categoría</option>
-                    <option value="balones">Balones</option>
-                    <option value="ropa">Ropa</option>
-                    <option value="accesorios">Accesorios</option>
-                </select>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar en la tienda...">
             </div>
-
-            <!-- Productos en cada categoría -->
-            <div id="balones" class="product-container">
-                <div class="product-card" onclick="showProductDetails('balon1')">
+            <div class="product-container">
+                <div class="product-card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
                     <h3>Balón de Voleibol Molten</h3>
                     <p class="price">$250.00 MXN</p>
                 </div>
-                <div class="product-card" onclick="showProductDetails('balon2')">
+                <div class="product-card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s" alt="Balón de Voleibol Profesional">
                     <h3>Balón de Voleibol Profesional</h3>
                     <p class="price">$500.00 MXN</p>
@@ -254,110 +188,20 @@
             </div>
         </div>
 
-        <!-- Detalles de los productos -->
-        <div id="product-details" class="section" style="display:none;">
-            <h2>Detalles del Producto</h2>
-            <div id="product-info"></div>
-        </div>
-
-        <!-- Sección de ofertas -->
-        <div id="ofertas" class="section">
-            <h2>Ofertas Especiales</h2>
-            <p>Aquí encontrarás las mejores ofertas de la temporada. ¡No te las pierdas!</p>
-        </div>
-
-        <!-- Sección de contacto -->
-        <div id="contacto" class="section">
-            <h2>Contacto</h2>
-            <p>Si tienes preguntas, no dudes en contactarnos. Estamos para ayudarte.</p>
-        </div>
-
-        <!-- Sección de carrito -->
         <div id="carrito" class="section">
             <h2>Tu Carrito</h2>
-            <p>Aún no tienes productos en tu carrito.</p>
         </div>
     </div>
 
-    <!-- Pie de página -->
     <footer>
-        <p>&copy; 2025 Mi Tienda en Línea | Todos los derechos reservados</p>
-        <p>Contacto: info@mitienda.com | Teléfono: +52 123 456 7890</p>
+        <p>&copy; 2025 Mi Tienda en Línea</p>
     </footer>
 
-    <!-- Script para cargar las páginas sin recargar -->
     <script>
         function loadPage(page) {
-            // Ocultar todas las secciones
-            const secciones = document.querySelectorAll('.section');
-            secciones.forEach(seccion => seccion.style.display = 'none');
-            
-            // Mostrar la sección seleccionada
-            const seccionSeleccionada = document.getElementById(page);
-            if (seccionSeleccionada) {
-                seccionSeleccionada.style.display = 'block';
-            }
-        }
-
-        // Cargar productos por categoría
-        function loadCategory(category) {
-            const categories = document.querySelectorAll('.product-container');
-            categories.forEach(c => c.style.display = 'none');
-            
-            const categorySelected = document.getElementById(category);
-            if (categorySelected) {
-                categorySelected.style.display = 'grid';
-            }
-        }
-
-        // Mostrar los detalles del producto
-        function showProductDetails(product) {
-            const details = {
-                'balon1': {
-                    name: 'Balón de Voleibol Molten',
-                    price: '$250.00 MXN',
-                    description: 'Este balón de voleibol Molten es ideal para entrenamientos y partidos amateur. Con un diseño ergonómico y duradero, asegura un buen control del balón.',
-                    images: [
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s',
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvyyK4p5Zb_MQGvPToJpJGvvgtcYRAwBoNYw&s'
-                    ]
-                },
-                'balon2': {
-                    name: 'Balón de Voleibol Profesional',
-                    price: '$500.00 MXN',
-                    description: 'Este balón de voleibol profesional es perfecto para competencias de alto nivel. Hecho con materiales de calidad que garantizan un excelente rendimiento.',
-                    images: [
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s',
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMC5z-EbdP8ZLXTo-YtKo5k8OTn1aA9x_U8w&s'
-                    ]
-                }
-            };
-            
-            const productData = details[product];
-            if (productData) {
-                document.getElementById('product-info').innerHTML = `
-                    <h3>${productData.name}</h3>
-                    <p><strong>Precio:</strong> ${productData.price}</p>
-                    <p><strong>Descripción:</strong> ${productData.description}</p>
-                    <table class="product-info-table">
-                        <tr>
-                            <th>Imagen</th>
-                            <th>Detalles</th>
-                        </tr>
-                        <tr>
-                            <td><img src="${productData.images[0]}" alt="${productData.name}" style="max-width: 150px;"></td>
-                            <td>${productData.description}</td>
-                        </tr>
-                    </table>
-                    <div class="buy-button">Comprar</div>
-                `;
-                loadPage('product-details');
-            }
-        }
-
-        // Por defecto mostrar la sección de inicio
-        window.onload = function() {
-            loadPage('inicio');
+            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(page).style.display = 'block';
+            document.querySelector('.search-bar').style.display = (page === 'productos') ? 'block' : 'none';
         }
     </script>
 </body>
