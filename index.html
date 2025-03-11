@@ -354,7 +354,7 @@
             
             const productData = details[product];
             if (productData) {
-                document.getElementById('product-info').innerHTML = `
+                document.getElementById('product-info').innerHTML = 
                     <h3>${productData.name}</h3>
                     <p><strong>Precio:</strong> ${productData.price}</p>
                     <p><strong>Descripción:</strong> ${productData.description}</p>
@@ -369,7 +369,7 @@
                         </tr>
                     </table>
                     <div class="buy-button">Comprar</div>
-                `;
+                ;
                 loadPage('product-details');
             }
         }
@@ -377,46 +377,6 @@
         // Por defecto mostrar la sección de inicio
         window.onload = function() {
             loadPage('inicio');
-        }
-<script>
-        let carrito = [];
-
-        function agregarAlCarrito(nombre, precio) {
-            carrito.push({ nombre, precio });
-            actualizarCarrito();
-            alert(`${nombre} se ha añadido al carrito.`);
-        }
-
-        function actualizarCarrito() {
-            let carritoHTML = "";
-            let total = 0;
-            carrito.forEach((item, index) => {
-                carritoHTML += `<p>${item.nombre} - $${item.precio.toFixed(2)} MXN <button onclick="eliminarDelCarrito(${index})">Eliminar</button></p>`;
-                total += item.precio;
-            });
-            carritoHTML += `<h3>Total: $${total.toFixed(2)} MXN</h3>`;
-            carritoHTML += `<button onclick="generarRecibo()">Imprimir Recibo</button>`;
-            document.getElementById('carrito').innerHTML = carritoHTML;
-        }
-
-        function eliminarDelCarrito(index) {
-            carrito.splice(index, 1);
-            actualizarCarrito();
-        }
-
-        function generarRecibo() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.text("Recibo de compra", 10, 10);
-            let y = 20;
-            let total = 0;
-            carrito.forEach(item => {
-                doc.text(`${item.nombre} - $${item.precio.toFixed(2)} MXN`, 10, y);
-                y += 10;
-                total += item.precio;
-            });
-            doc.text(`Total: $${total.toFixed(2)} MXN`, 10, y + 10);
-            doc.save("recibo.pdf");
         }
     </script>
 </body>
