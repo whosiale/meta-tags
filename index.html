@@ -214,6 +214,19 @@
         .modal-colors .color2 { background-color: blue; }
         .modal-colors .color3 { background-color: green; }
 
+        /* Category Dropdown */
+        .category-dropdown {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .category-dropdown select {
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
     </style>
 </head>
 <body>
@@ -228,75 +241,92 @@
     </nav>
 
     <div class="content" id="content">
+        <!-- Sección de Inicio -->
         <div id="inicio" class="section" style="display:block;">
             <h2>Bienvenido a Umizuumi's Volleyball Shop</h2>
+            <p>En nuestra tienda encontrarás productos de voleibol de alta calidad. Ofrecemos balones, accesorios y equipos profesionales para jugadores de todos los niveles.</p>
         </div>
 
+        <!-- Sección de Productos -->
         <div id="productos" class="section">
             <h2>Productos Disponibles</h2>
+
+            <!-- Barra Desplegable para Selección de Categorías -->
+            <div class="category-dropdown">
+                <label for="categorySelect">Selecciona una categoría:</label>
+                <select id="categorySelect" onchange="filterProducts()">
+                    <option value="all">Todos</option>
+                    <option value="balon">Balones</option>
+                    <option value="accesorio">Accesorios</option>
+                </select>
+            </div>
+
             <div class="search-bar">
                 <input type="text" placeholder="Buscar en la tienda...">
             </div>
-            <div class="product-container">
-                <div class="product-card" onclick="showProductDetails('Balón de Voleibol Molten', 'Este es un balón de voleibol Molten, de alta calidad para entrenamiento profesional.', 250, ['rojo', 'azul', 'verde'])">
+
+            <div class="product-container" id="productContainer">
+                <!-- Productos por Categoría -->
+                <div class="product-card" data-category="balon" onclick="showProductDetails('Balón de Voleibol Molten', 'Este es un balón de voleibol Molten, de alta calidad para entrenamiento profesional.', 250, ['rojo', 'azul', 'verde'])">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH60DmcM2pjYiB_RGv2LLrPkH0Urq6tDoZ2Q&s" alt="Balón de Voleibol Molten">
                     <h3>Balón de Voleibol Molten</h3>
                     <p class="price">$250.00 MXN</p>
                 </div>
-                <div class="product-card" onclick="showProductDetails('Balón de Voleibol Profesional', 'Balón profesional de alta resistencia, ideal para competencias.', 500, ['amarillo', 'negro'])">
+                <div class="product-card" data-category="balon" onclick="showProductDetails('Balón de Voleibol Profesional', 'Balón profesional de alta resistencia, ideal para competencias.', 500, ['amarillo', 'negro'])">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8b1bgTCgS3kB4T6swe42UyqAA5RNydyN7Q&s" alt="Balón de Voleibol Profesional">
                     <h3>Balón de Voleibol Profesional</h3>
                     <p class="price">$500.00 MXN</p>
                 </div>
+                <div class="product-card" data-category="accesorio" onclick="showProductDetails('Red de Voleibol Profesional', 'Red de voleibol profesional para entrenamientos y competencias.', 600, ['blanco'])">
+                    <img src="https://via.placeholder.com/300x200?text=Red+de+Voleibol" alt="Red de Voleibol Profesional">
+                    <h3>Red de Voleibol Profesional</h3>
+                    <p class="price">$600.00 MXN</p>
+                </div>
+                <!-- Agregar más productos aquí -->
             </div>
         </div>
 
+        <!-- Sección de Carrito -->
         <div id="carrito" class="section">
             <h2>Tu Carrito</h2>
-            <div id="cartDetails"></div>
-            <p id="cartTotal">Total: $0.00 MXN</p>
+            <p>Aún no has agregado productos a tu carrito.</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Mi Tienda en Línea</p>
+        <p>&copy; 2025 Umizuumi's Volleyball Shop | Todos los derechos reservados</p>
     </footer>
 
-    <!-- Modal for Product Details -->
+    <!-- Modal de detalles del producto -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle" class="modal-title"></h2>
-            <p id="modalDescription" class="modal-description"></p>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-description" id="modalDescription"></div>
+            <div class="modal-price" id="modalPrice"></div>
             <div class="modal-colors" id="modalColors"></div>
-            <p><strong>Precio: $<span id="modalPrice"></span> MXN</strong></p>
-            <button class="buy-button" onclick="addToCart()">Agregar al Carrito</button>
+            <a href="#" class="buy-button">Comprar ahora</a>
         </div>
     </div>
 
     <script>
-        let cart = [];
-
         function loadPage(page) {
-            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none');
             document.getElementById(page).style.display = 'block';
-            document.querySelector('.search-bar').style.display = (page === 'productos') ? 'block' : 'none';
         }
 
         function showProductDetails(title, description, price, colors) {
             document.getElementById('modalTitle').textContent = title;
             document.getElementById('modalDescription').textContent = description;
-            document.getElementById('modalPrice').textContent = price;
-            
-            const colorContainer = document.getElementById('modalColors');
-            colorContainer.innerHTML = '';
+            document.getElementById('modalPrice').textContent = `$${price}`;
+            const colorsDiv = document.getElementById('modalColors');
+            colorsDiv.innerHTML = '';
             colors.forEach(color => {
-                let colorDiv = document.createElement('div');
-                colorDiv.className = 'modal-colors ' + 'color' + colors.indexOf(color);
-                colorDiv.style.backgroundColor = color;
-                colorContainer.appendChild(colorDiv);
+                const colorDiv = document.createElement('div');
+                colorDiv.className = `color${colors.indexOf(color) + 1}`;
+                colorsDiv.appendChild(colorDiv);
             });
-            
             document.getElementById('productModal').style.display = 'block';
         }
 
@@ -304,23 +334,16 @@
             document.getElementById('productModal').style.display = 'none';
         }
 
-        function addToCart() {
-            let title = document.getElementById('modalTitle').textContent;
-            let price = parseFloat(document.getElementById('modalPrice').textContent);
-            cart.push({ title, price });
-            updateCart();
-            closeModal();
-        }
-
-        function updateCart() {
-            let cartDetails = document.getElementById('cartDetails');
-            cartDetails.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                cartDetails.innerHTML += `<p>${item.title} - $${item.price} MXN</p>`;
-                total += item.price;
+        function filterProducts() {
+            const selectedCategory = document.getElementById('categorySelect').value;
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (selectedCategory === 'all' || product.getAttribute('data-category') === selectedCategory) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
             });
-            document.getElementById('cartTotal').textContent = `Total: $${total} MXN`;
         }
     </script>
 </body>
