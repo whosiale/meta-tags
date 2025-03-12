@@ -319,12 +319,12 @@
         function showProductDetails(title, description, price, colors) {
             document.getElementById('modalTitle').textContent = title;
             document.getElementById('modalDescription').textContent = description;
-            document.getElementById('modalPrice').textContent = $${price};
+            document.getElementById('modalPrice').textContent = `$${price}`;
             const colorsDiv = document.getElementById('modalColors');
             colorsDiv.innerHTML = '';
             colors.forEach(color => {
                 const colorDiv = document.createElement('div');
-                colorDiv.className = color${colors.indexOf(color) + 1};
+                colorDiv.className = `color${colors.indexOf(color) + 1}`;
                 colorsDiv.appendChild(colorDiv);
             });
             document.getElementById('productModal').style.display = 'block';
@@ -345,3 +345,6 @@
                 }
             });
         }
+    </script>
+</body>
+</html>
