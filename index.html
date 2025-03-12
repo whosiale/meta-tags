@@ -240,6 +240,33 @@
                 } else {
                     product.style.display = 'none';
                 }
+
+                function addToCart(productName, price) {
+    let cartTableBody = document.getElementById("cartTableBody");
+
+    // Verificar si el producto ya está en el carrito
+    let existingRow = [...cartTableBody.getElementsByTagName("tr")].find(row => row.dataset.product === productName);
+    
+    if (existingRow) {
+        let quantityCell = existingRow.querySelector(".cart-item-quantity");
+        quantityCell.textContent = parseInt(quantityCell.textContent) + 1;
+    } else {
+        let newRow = document.createElement("tr");
+        newRow.dataset.product = productName;
+        newRow.innerHTML = `
+            <td>${productName}</td>
+            <td class="cart-item-quantity">1</td>
+            <td>$${price}</td>
+            <td class="cart-item-remove" onclick="removeFromCart(this)">X</td>
+        `;
+        cartTableBody.appendChild(newRow);
+    }
+}
+        function removeFromCart(element) {
+            let row = element.parentElement;
+            row.remove();
+            }
+
             });
         }
     </script>
