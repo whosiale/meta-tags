@@ -314,30 +314,24 @@ function addToCart() {
     closeModal();
 }
 
-function updateCart() {
-    let cartDetails = document.getElementById('cartDetails');
-    cartDetails.innerHTML = '';
-    let total = 0;
+  function addToCart() {
+            let title = document.getElementById('modalTitle').textContent;
+            let price = parseFloat(document.getElementById('modalPrice').textContent);
+            cart.push({ title, price });
+            updateCart();
+            closeModal();
+        }
 
-    cart.forEach((item, index) => {
-        cartDetails.innerHTML += `
-            <p>${item.title} - $${item.price} MXN 
-            <button onclick="removeFromCart(${index})">Eliminar</button></p>
-        `;
-        total += item.price;
-    });
-
-    document.getElementById('cartTotal').textContent = `Total: $${total} MXN`;
-}
-
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-function closeModal() {
-    // Código para cerrar el modal
-}
+        function updateCart() {
+            let cartDetails = document.getElementById('cartDetails');
+            cartDetails.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                cartDetails.innerHTML += <p>${item.title} - $${item.price} MXN</p>;
+                total += item.price;
+            });
+            document.getElementById('cartTotal').textContent = Total: $${total} MXN;
+        }
     </script>
 </body>
 </html>
